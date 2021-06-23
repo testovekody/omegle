@@ -6,7 +6,7 @@ import time
 
 driver = webdriver.Firefox()
 firefox_options = Options()
-#firefox_options.add_argument("--headless")
+firefox_options.add_argument("--headless")
 driver = webdriver.Firefox(options=firefox_options)
 
 
