@@ -2,6 +2,10 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
 import time
+from pyvirtualdisplay import Display
+
+display = Display(visible=0, size=(1366, 768))
+display.start()
 
 
 driver = webdriver.Firefox()
