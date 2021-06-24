@@ -71,7 +71,6 @@ agree3 = driver.find_element_by_xpath('/html/body/div[7]/div/p[3]/input')
 agree3.click()
 
 def messagesend():
-    time.sleep(1)
     try:
         message = driver.find_element_by_xpath('/html/body/div[5]/div/div/div[2]/table/tbody/tr/td[2]/div/textarea')
         message.click()
