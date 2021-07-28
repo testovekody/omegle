@@ -90,4 +90,4 @@ async def e(ctx: Context, amount: float, paymentapp: str, percent, crypto, membe
     await sprava.add_reaction("👍")
     await sprava.add_reaction("👎")
 
-bot.run("ODY5MTc5NTM4NTkxMDY4MjMw.YP6chg.3k_ayifTBzN2HhGnZ8nw8AkwghM")
+bot.run("ODY5MTc5NTM4NTkxMDY4MjMw.YP6chg.tDPLzA6mO7jwDcC5DUeaOihEEa")
