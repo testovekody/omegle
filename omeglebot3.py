@@ -8,10 +8,6 @@ import asyncio
 async def wait():
     await asyncio.sleep(1)
 
-
-
-
-
 @bot.command()
 async def h(ctx: Context, amount: float, paymentapp: str, percent, crypto, member: discord.Member):
     percentage = float(percent) / 100
@@ -43,14 +39,24 @@ async def h(ctx: Context, amount: float, paymentapp: str, percent, crypto, membe
     embedVar = discord.Embed(color=0x00ff00)
     embedVar.add_field(name="Held:", value="$" + str(amount1) + " " + paymentapp + " -> $" + str(
         final1) + " " + crypto + ".", inline=True)
-    embedVar.add_field(name="For: ", value=member.mention, inline=True)
     await polls.send(embed=embedVar)
     await wait()
     sprava = await polls.fetch_message(polls.last_message_id)
     await sprava.add_reaction("👍")
     await sprava.add_reaction("👎")
+    print(member)
+    potvrdenka = await polls.send("Waiting for " + member.mention + " to confirm the transaction.")
 
-    #syntax: amount, paymentapp, percentage, crypto, user
+    def check(reaction, user):
+        return user == member and str(reaction.emoji) == '👍'
+
+    confirmation = await bot.wait_for('reaction_add', check=check)
+
+    if confirmation:
+        await wait()
+        edit = member.mention + (" has confirmed the transaction")
+        await potvrdenka.edit(content=edit)
+        await sprava.clear_reactions()
 
 @bot.command()
 async def e(ctx: Context, amount: float, paymentapp: str, percent, crypto, member: discord.Member):
@@ -83,11 +89,21 @@ async def e(ctx: Context, amount: float, paymentapp: str, percent, crypto, membe
     embedVar = discord.Embed(color=0x00ff00)
     embedVar.add_field(name="Exchanged:", value="$" + str(amount1) + " " + paymentapp + " -> $" + str(
         final1) + " " + crypto + ".", inline=True)
-    embedVar.add_field(name="For: ", value=member.mention, inline=True)
     await polls.send(embed=embedVar)
     await wait()
     sprava = await polls.fetch_message(polls.last_message_id)
     await sprava.add_reaction("👍")
     await sprava.add_reaction("👎")
+    potvrdenka = await polls.send("Waiting for "+member.mention+" to confirm the transaction.")
+    def check(reaction, user):
+        return user == member and str(reaction.emoji) == '👍'
+
+    confirmation = await bot.wait_for('reaction_add', check=check)
+
+    if confirmation:
+        await wait()
+        edit = member.mention + (" has confirmed the transaction")
+        await potvrdenka.edit(content = edit)
+        await sprava.clear_reactions()
 
 bot.run("ODY5MTc5NTM4NTkxMDY4MjMw.YP6chg.tDPLzA6mO7jwDcC5DUeaOihEEa")
