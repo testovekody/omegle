@@ -9,6 +9,7 @@ async def wait():
     await asyncio.sleep(1)
 
 @bot.command()
+@commands.has_any_role('Rico', 'Technician')
 async def h(ctx: Context, amount: float, paymentapp: str, percent, crypto, member: discord.Member):
     percentage = float(percent) / 100
     vysledok = amount * percentage
@@ -65,6 +66,7 @@ async def h(ctx: Context, amount: float, paymentapp: str, percent, crypto, membe
         await sprava.clear_reactions()
 
 @bot.command()
+@commands.has_any_role('Rico', 'Technician')
 async def e(ctx: Context, amount: float, paymentapp: str, percent, crypto, member: discord.Member):
     percentage = float(percent) / 100
     vysledok = amount * percentage
@@ -121,8 +123,9 @@ async def e(ctx: Context, amount: float, paymentapp: str, percent, crypto, membe
 
 
 @bot.command()
+@commands.has_any_role('Rico', 'Technician')
 async def clear(ctx: Context, number: int):
     await ctx.channel.purge(limit=number)
 
 
-bot.run("ODY5MTc5NTM4NTkxMDY4MjMw.YP6chg.tDPLzA6mO7jwDcC5DUeaOihEEa")
+bot.run("ODY5MTc5NTM4NTkxMDY4MjMw.YP6chg.tDPLzA6mO7jwDcC5DUeaOihEEa4")
