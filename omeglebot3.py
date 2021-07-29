@@ -21,6 +21,10 @@ async def h(ctx: Context, amount: float, paymentapp: str, percent, crypto, membe
         crypto = "BTC"
     if crypto.lower() == "usdt" or crypto.lower() == "tether" or crypto.lower() == "usd" or crypto.lower() == "$":
         crypto = "USDT"
+    if crypto.lower() == "xlm":
+        crypto = "XLM"
+    if crypto.lower() == "bch":
+        crypto = "BCH"
     if paymentapp.lower() == "venmo":
         paymentapp = "Venmo"
     elif paymentapp.lower() == "cashapp" or paymentapp.lower() == "ca":
@@ -35,6 +39,8 @@ async def h(ctx: Context, amount: float, paymentapp: str, percent, crypto, membe
         paymentapp = "PayPal"
     elif paymentapp.lower() == "agc":
         paymentapp = "Amazon GC"
+    elif paymentapp.lower() == "vcc":
+        paymentapp = "VCC"
     polls = bot.get_channel(868414903520743454)
     embedVar = discord.Embed(color=0x00ff00)
     embedVar.add_field(name="Held:", value="$" + str(amount1) + " " + paymentapp + " -> $" + str(
@@ -71,6 +77,10 @@ async def e(ctx: Context, amount: float, paymentapp: str, percent, crypto, membe
         crypto = "BTC"
     if crypto.lower() == "usdt" or crypto.lower() == "tether" or crypto.lower() == "usd" or crypto.lower() == "$":
         crypto = "USDT"
+    if crypto.lower() == "xlm":
+        crypto = "XLM"
+    if crypto.lower() == "bch":
+        crypto = "BCH"
     if paymentapp.lower() == "venmo":
         paymentapp = "Venmo"
     elif paymentapp.lower() == "cashapp" or paymentapp.lower() == "ca":
@@ -85,6 +95,9 @@ async def e(ctx: Context, amount: float, paymentapp: str, percent, crypto, membe
         paymentapp = "PayPal"
     elif paymentapp.lower() == "agc":
         paymentapp = "Amazon GC"
+    elif paymentapp.lower() == "vcc":
+        paymentapp = "VCC"
+
     polls = bot.get_channel(868414903520743454)
     embedVar = discord.Embed(color=0x00ff00)
     embedVar.add_field(name="Exchanged:", value="$" + str(amount1) + " " + paymentapp + " -> $" + str(
@@ -105,5 +118,11 @@ async def e(ctx: Context, amount: float, paymentapp: str, percent, crypto, membe
         edit = member.mention + (" has confirmed the transaction")
         await potvrdenka.edit(content = edit)
         await sprava.clear_reactions()
+
+
+@bot.command()
+async def clear(ctx: Context, number: int):
+    await ctx.channel.purge(limit=number)
+
 
 bot.run("ODY5MTc5NTM4NTkxMDY4MjMw.YP6chg.tDPLzA6mO7jwDcC5DUeaOihEEa")
