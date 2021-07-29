@@ -128,4 +128,4 @@ async def clear(ctx: Context, number: int):
     await ctx.channel.purge(limit=number)
 
 
-bot.run("ODY5MTc5NTM4NTkxMDY4MjMw.YP6chg.tDPLzA6mO7jwDcC5DUeaOihEEa4")
+bot.run("ODY5MTc5NTM4NTkxMDY4MjMw.YP6chg.OzzRfyco59WDRj3Bnu0n8mG8qi")
