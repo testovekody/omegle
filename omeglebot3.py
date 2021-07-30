@@ -52,7 +52,7 @@ async def h(ctx: Context, amount: float, paymentapp: str, percent, crypto, membe
         paymentapp = "VCC"
 
     #confirmed trades channel
-    confirmed_trades = bot.get_channel(868414903520743454)
+    confirmed_trades = bot.get_channel(866729946658242600)
     #setting up the embed
     embed_variable = discord.Embed(color=0x5C5CFF)
     embed_variable.add_field(name="Held:", value="$" + str(amountrouded) + " " + paymentapp + " -> $" + str(finalrounded) + " " + crypto + ".", inline=True)
@@ -116,7 +116,7 @@ async def e(ctx: Context, amount: float, paymentapp: str, percent, crypto, membe
         paymentapp = "VCC"
 
     # confirmed trades channel
-    confirmed_trades = bot.get_channel(868414903520743454)
+    confirmed_trades = bot.get_channel(866729946658242600)
     # setting up the embed
     embed_variable = discord.Embed(color=0xFFFF00)
     embed_variable.add_field(name="Exchanged:", value="$" + str(amountrouded) + " " + paymentapp + " -> $" + str(finalrounded) + " " + crypto + ".", inline=True)
@@ -228,7 +228,7 @@ async def hh(ctx: Context, amount: float, paymentapp: str, percent, crypto, memb
         paymentapp1 = "VCC"
 
     # confirmed trades channel
-    confirmed_trades = bot.get_channel(868414903520743454)
+    confirmed_trades = bot.get_channel(866729946658242600)
     # setting up the embed
     embed_variable = discord.Embed(color=0x00ff00)
     embed_variable.add_field(name="Held:", value="$" + str(amountrouded) + " " + paymentapp + " -> $" + str(finalrounded) + " " + crypto + ".", inline=True)
@@ -332,7 +332,7 @@ async def ee(ctx: Context, amount: float, paymentapp: str, percent, crypto, memb
         paymentapp1 = "VCC"
 
     # confirmed trades channel
-    confirmed_trades = bot.get_channel(868414903520743454)
+    confirmed_trades = bot.get_channel(866729946658242600)
     # setting up the embed
     embed_variable = discord.Embed(color=0x00ff00)
     embed_variable.add_field(name="Exchanged:", value="$" + str(amountrouded) + " " + paymentapp + " -> $" + str(finalrounded) + " " + crypto + ".", inline=True)
@@ -436,7 +436,7 @@ async def he(ctx: Context, amount: float, paymentapp: str, percent, crypto, memb
         paymentapp1 = "VCC"
 
     # confirmed trades channel
-    confirmed_trades = bot.get_channel(868414903520743454)
+    confirmed_trades = bot.get_channel(866729946658242600)
     # setting up the embed
     embed_variable = discord.Embed(color=0x00ff00)
     embed_variable.add_field(name="Held:", value="$" + str(amountrouded) + " " + paymentapp + " -> $" + str(finalrounded) + " " + crypto + ".", inline=True)
@@ -540,7 +540,7 @@ async def eh(ctx: Context, amount: float, paymentapp: str, percent, crypto, memb
         paymentapp1 = "VCC"
 
     # confirmed trades channel
-    confirmed_trades = bot.get_channel(868414903520743454)
+    confirmed_trades = bot.get_channel(866729946658242600)
     # setting up the embed
     embed_variable = discord.Embed(color=0x00ff00)
     embed_variable.add_field(name="Exchanged:", value="$" + str(amountrouded) + " " + paymentapp + " -> $" + str(finalrounded) + " " + crypto + ".", inline=True)
@@ -564,4 +564,4 @@ async def eh(ctx: Context, amount: float, paymentapp: str, percent, crypto, memb
         await last_message.clear_reactions()
 
 
-bot.run("ODY5MTc5NTM4NTkxMDY4MjMw.YP6chg.OzzRfyco59WDRj3Bnu0n8mG8qiA")
+bot.run("ODY5MTc5NTM4NTkxMDY4MjMw.YP6chg.OzzRfyco59WDRj3Bnu0n8mG8qiQ")
