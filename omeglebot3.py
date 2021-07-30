@@ -139,6 +139,69 @@ async def e(ctx: Context, amount: float, paymentapp: str, percent, crypto, membe
         await last_message.clear_reactions()
 
 
+@bot.command()
+@commands.has_any_role('Rico', 'Technician')
+async def r(ctx: Context, amount: float, paymentapp: str, percent, crypto, member: discord.Member):
+    percentage = float(percent) / 100
+    vysledok = amount * percentage
+    output = amount - vysledok
+    finalrounded = round(output, 2)
+    amountrouded = round(amount, 2)
+    # supported cryptocurrencies list
+    if crypto.lower() == "ltc":
+        crypto = "LTC"
+    elif crypto.lower() == "btc":
+        crypto = "BTC"
+    elif crypto.lower() == "usdt" or crypto.lower() == "tether" or crypto.lower() == "usd" or crypto.lower() == "$":
+        crypto = "USDT"
+    elif crypto.lower() == "xlm":
+        crypto = "XLM"
+    elif crypto.lower() == "bch":
+        crypto = "BCH"
+    # supported payment services list
+    if paymentapp.lower() == "venmo":
+        paymentapp = "Venmo"
+    elif paymentapp.lower() == "cashapp" or paymentapp.lower() == "ca":
+        paymentapp = "CashApp"
+    elif paymentapp.lower() == "applepay" or paymentapp.lower() == "apay":
+        paymentapp = "ApplePay"
+    elif paymentapp.lower() == "zelle":
+        paymentapp = "Zelle"
+    elif paymentapp.lower() == "googlepay" or paymentapp.lower() == "gpay":
+        paymentapp = "GooglePay"
+    elif paymentapp.lower() == "paypal" or paymentapp.lower() == "pp":
+        paymentapp = "PayPal"
+    elif paymentapp.lower() == "agc":
+        paymentapp = "Amazon GC"
+    elif paymentapp.lower() == "vcc":
+        paymentapp = "VCC"
+
+    # confirmed trades channel
+    confirmed_trades = bot.get_channel(868414903520743454)
+    # setting up the embed
+    embed_variable = discord.Embed(color=0xFF0000)
+    embed_variable.add_field(name="Held/Exchanged:", value="$" + str(amountrouded) + " " + paymentapp + " -> $" + str(finalrounded) + " " + crypto + ".", inline=True)
+    await confirmed_trades.send(embed=embed_variable)
+    await wait()
+    last_message = await confirmed_trades.fetch_message(confirmed_trades.last_message_id)
+    await last_message.add_reaction("👍")
+    await last_message.add_reaction("👎")
+    waiting_for_confirmation = await confirmed_trades.send("Waiting for " + "[redacted]" + " to confirm the transaction.")
+
+    # creating check function
+    def check(reaction, user):
+        return user == member and str(reaction.emoji) == '👍'
+
+    confirmation = await bot.wait_for('reaction_add', check=check)
+
+    if confirmation:
+        edit = "[redacted] has confirmed the transaction"
+        await waiting_for_confirmation.edit(content=edit)
+        await last_message.clear_reactions()
+
+
+
+
 #CHAT CLEANER COMMAND
 
 
