@@ -617,11 +617,12 @@ async def eh(ctx: Context, amount: float, paymentapp: str, percent, crypto, memb
 
     # creating check function
     def check(reaction, user):
-        return user == member and str(reaction.emoji) == '👍'
+        return user == member and str(reaction.emoji) == '👍' or str(reaction.emoji) == '👎'
 
     confirmation = await bot.wait_for('reaction_add', check=check)
 
     if confirmation:
+        await wait()
         edit = member.mention + " has confirmed the transactions."
         await waiting_for_confirmation.edit(content=edit)
         await last_message.clear_reactions()
