@@ -564,4 +564,4 @@ async def eh(ctx: Context, amount: float, paymentapp: str, percent, crypto, memb
         await last_message.clear_reactions()
 
 
-bot.run("ODY5MTc5NTM4NTkxMDY4MjMw.YP6chg.OzzRfyco59WDRj3Bnu0n8mG8qiQ")
+bot.run("ODY5MTc5NTM4NTkxMDY4MjMw.YP6chg.QOjbbwAjd3boNYVQLAFYRjq8gX")
